@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Daily Tasks</h1>
+      </header>
+      <button onclick="app.openAddTaskModal()">Add Task</button>
+      <ul id="taskList" role="list"></ul>
+    </main>
+
+    <!-- add modal -->
+    <dialog
+      id="addTaskModal"
+      class="modal"
+      role="dialog"
+      aria-labelledby="addTaskModalTitle"
+      aria-describedby="addTaskModalDesc"
+    >
+      <div class="modal-content">
+        <header class="modal-header">
+          <h2 id="addTaskModalTitle">Add New Task</h2>
+          <button
+            class="close-btn"
+            onclick="app.closeAddTaskModal()"
+            aria-label="Close Modal"
+          >
+            &times;
+          </button>
+        </header>
+        <div class="modal-body" id="addTaskModalDesc">
+          <label for="newTaskInput">Task:</label>
+          <input
+            type="text"
+            id="newTaskInput"
+            placeholder="Add your task"
+            required
+          />
+          <label for="newTaskDate">Due Date:</label>
+          <input type="date" id="newTaskDate" required />
+          <button onclick="app.addTask()">Add Task</button>
+        </div>
+        <div class="warning-message" id="addTaskWarning" role="alert"></div>
+      </div>
+    </dialog>
+
+    <!-- edit modal -->
+    <dialog
+      id="editTaskModal"
+      class="modal"
+      role="dialog"
+      aria-labelledby="editTaskModalTitle"
+      aria-describedby="editTaskModalDesc"
+    >
+      <div class="modal-content">
+        <header class="modal-header">
+          <h2 id="editTaskModalTitle">Edit Task</h2>
+          <button
+            class="close-btn"
+            onclick="app.closeEditTaskModal()"
+            aria-label="Close Modal"
+          >
+            &times;
+          </button>
+        </header>
+        <div class="modal-body" id="editTaskModalDesc">
+          <label for="editTaskInput">Task:</label>
+          <input type="text" id="editTaskInput" required />
+          <label for="editTaskDate">Due Date:</label>
+          <input type="date" id="editTaskDate" required />
+          <button onclick="app.updateTask()">Update Task</button>
+        </div>
+        <div class="warning-message" id="editTaskWarning" role="alert"></div>
+      </div>
+    </dialog>
+
+    <!-- delete modal -->
+    <dialog
+      id="deleteTaskModal"
+      class="modal"
+      role="dialog"
+      aria-labelledby="deleteTaskModalTitle"
+      aria-describedby="deleteTaskModalDesc"
+    >
+      <div class="modal-content">
+        <header class="modal-header">
+          <h2 id="deleteTaskModalTitle">Confirm Delete</h2>
+          <button
+            class="close-btn"
+            onclick="app.closeDeleteTaskModal()"
+            aria-label="Close Modal"
+          >
+            &times;
+          </button>
+        </header>
+        <div class="modal-body" id="deleteTaskModalDesc">
+          <p class="delete-msg">Are you sure you want to delete this task?</p>
+          <button class="del-modal-del-btn" onclick="app.deleteTask()">
+            Delete
+          </button>
+          <button
+            class="del-modal-cancel-btn"
+            onclick="app.closeDeleteTaskModal()"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
